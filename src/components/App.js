@@ -1,23 +1,67 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import About from './About';
-import Home from './Home';
-import Navigation from './Navigation';
-import './../styles/App.css';
+import React, { useLayoutEffect } from "react";Add commentMore actions
+import "./../styles/App.css";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 
-function App() {
+const Item1 = () => {
+  return (
+    <>
+      <h1>Item 1</h1>
+      <p>Description for Item 1</p>
+    </>
+  );
+};
+const Item2 = () => {
+  return (
+    <>
+      <h1>Item 2</h1>
+      <p>Description for Item 2</p>
+    </>
+  );
+};
+const Item3 = () => {
+  return (
+    <>
+      <h1>Item 3</h1>
+      <p>Description for Item 3</p>
+    </>
+  );
+};
+const App = () => {
   return (
     <div>
-      <h1>React Navigation</h1>
-      <Router>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </Router>
+      <BrowserRouter>
+        <>
+          <h1>Item List</h1>
+          <Layout />
+          <Switch>
+            <Route path="/items/1">
+              <Item1 />
+            </Route>
+            <Route path="/items/2">
+              <Item2 />
+            </Route>
+            <Route path="/items/3">
+              <Item3 />
+            </Route>
+          </Switch>
+        </>
+      </BrowserRouter>
     </div>
   );
-}
-
+};
+const Layout = () => {
+  return (
+    <ul>
+      <li>
+        <Link to="/items/1">Item 1</Link>
+      </li>
+      <li>
+        <Link to="/items/2">Item 2</Link>
+      </li>
+      <li>
+        <Link to="/items/3">Item 3</Link>
+      </li>
+    </ul>
+  );
+};
 export default App;
