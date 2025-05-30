@@ -1,67 +1,45 @@
-import React, { useLayoutEffect } from "react";Add commentMore actions
-import "./../styles/App.css";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import React from "react";Add commentMore actions
+import './../styles/App.css';
+import { BrowserRouter,Link, Route, Routes } from "react-router-dom";
 
-const Item1 = () => {
+const Header = () => {
   return (
-    <>
-      <h1>Item 1</h1>
-      <p>Description for Item 1</p>
-    </>
+    <header>
+      <ul>
+       <li> <Link to="/">Home</Link></li>
+      <li><Link to="/about">About</Link> </li>
+    </ul>
+    </header>
   );
 };
-const Item2 = () => {
+
+
+const Home = () => {
   return (
-    <>
-      <h1>Item 2</h1>
-      <p>Description for Item 2</p>
-    </>
+    <h1>
+     Welcome to my website!
+    </h1>  
   );
 };
-const Item3 = () => {
-  return (
-    <>
-      <h1>Item 3</h1>
-      <p>Description for Item 3</p>
-    </>
-  );
-};
-const App = () => {
+const About = () => {
   return (
     <div>
-      <BrowserRouter>
-        <>
-          <h1>Item List</h1>
-          <Layout />
-          <Switch>
-            <Route path="/items/1">
-              <Item1 />
-            </Route>
-            <Route path="/items/2">
-              <Item2 />
-            </Route>
-            <Route path="/items/3">
-              <Item3 />
-            </Route>
-          </Switch>
-        </>
-      </BrowserRouter>
+    <h1>
+     About
+    </h1>
+    <p>This is a sample React Router program.</p>
     </div>
   );
 };
-const Layout = () => {
+
+const App = () => {
   return (
-    <ul>
-      <li>
-        <Link to="/items/1">Item 1</Link>
-      </li>
-      <li>
-        <Link to="/items/2">Item 2</Link>
-      </li>
-      <li>
-        <Link to="/items/3">Item 3</Link>
-      </li>
-    </ul>
-  );
-};
-export default App;
+   <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
